@@ -13,8 +13,12 @@ longpoll = vk_api.longpoll.VkLongPoll(vk_session)
 
 print("Server started")
 
+admins = (
+    245270656, #Булат
+    160229003  #Маша
+)
+
 for event in longpoll.listen():
-    if event.type == VkEventType.MESSAGE_NEW:
-        if event.to_me:
-            for id in open("user_list.txt", 'r'):
+    if event.type == VkEventType.MESSAGE_NEW and event.to_me and admins.count(event.user_id):
+            for id in open("userlist.txt", 'r'):
                 vk_session.method('messages.send', {'user_id': int(id), 'forward_messages': event.message_id, 'random_id': random()})
