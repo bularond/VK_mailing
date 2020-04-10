@@ -15,7 +15,9 @@ print("Server started")
 
 admins = (
     245270656, #Булат
-    160229003  #Маша
+    160229003, #Маша
+    575542074, #Влад
+    324536326  #Эрик
 )
 
 for event in longpoll.listen():
